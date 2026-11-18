@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mini Compiler for Student Result Expressions</title>
+  <meta name="description" content="Run programs through a small C compiler that checks types, generates three-address code and executes it.">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="top">
+    <div>
+      <h1>Mini Compiler for Student Result Expressions</h1>
+      <p class="subtitle">Basics of Compiler Design</p>
+    </div>
+    <details class="rules">
+      <summary>Language rules</summary>
+      <div class="rules-body">
+        <p>Types are <code>int</code> and <code>float</code>. Every statement ends with a semicolon.</p>
+        <ul>
+          <li>Declare: <code>int marks;</code></li>
+          <li>Assign: <code>marks = 420;</code></li>
+          <li>Print: <code>print marks;</code> or <code>print marks / 5;</code></li>
+        </ul>
+        <p>Expressions use <code>+ - * /</code>, brackets and unary signs. Declare and assign a variable before using it. Integer division drops the fraction. An int is widened to float when mixed with a float, and a float can't be assigned to an int. <code>//</code> starts a comment.</p>
+        <p>Not supported: strings, arrays, functions, loops and conditions.</p>
+      </div>
+    </details>
+  </header>
+
+  <main class="layout">
+    <section class="card editor-card" aria-labelledby="source-heading">
+      <h2 id="source-heading" class="card-title">Source program</h2>
+      <div class="examples" role="group" aria-label="Load an example">
+        <span class="examples-label">Examples</span>
+        <button type="button" data-example="percentage">Percentage</button>
+        <button type="button" data-example="division">Integer and float division</button>
+        <button type="button" data-example="undeclared">Undeclared variable</button>
+        <button type="button" data-example="typeError">Type error</button>
+      </div>
+      <div class="editor">
+        <div class="gutter" id="gutter" aria-hidden="true"></div>
+        <label for="source" class="visually-hidden">Source program</label>
+        <textarea id="source" spellcheck="false" autocapitalize="off" autocomplete="off" wrap="off"></textarea>
+      </div>
+      <div class="editor-footer">
+        <span id="size" class="muted">0 / 15,999 bytes</span>
+        <button type="button" id="run" class="primary">Run <kbd>Ctrl+Enter</kbd></button>
+      </div>
+    </section>
+
+    <section class="results" aria-labelledby="results-heading">
+      <h2 id="results-heading" class="visually-hidden">Results</h2>
+      <div class="card">
+        <h3 class="card-title">Compiler stages</h3>
+        <ol class="stages" id="stages">
+          <li data-stage="lexical">Tokens</li>
+          <li data-stage="syntax">Parsing</li>
+          <li data-stage="semantic">Symbol table and types</li>
+          <li data-stage="tac">Three-address code</li>
+          <li data-stage="execution">Execution</li>
+        </ol>
+        <p class="hint">The C compiler checks each statement in one pass. The strip marks which kind of check stopped the program.</p>
+      </div>
+
+      <div id="status" class="status" role="status" aria-live="polite">Run a program to see the result.</div>
+
+      <div class="card">
+        <h3 class="card-title">Three-address code</h3>
+        <pre id="tac" class="code empty">Shown after a successful run</pre>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">Program output</h3>
+        <pre id="output" class="code empty">Shown after a successful run</pre>
+        <p id="temp-note" class="hint" hidden>A printed expression is shown by the temporary (<code>_t</code>) that holds its value.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot muted">Runs the original C compiler (<code>mini_compiler.c</code>) on the server.</footer>
+</body>
+</html>

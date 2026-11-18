@@ -1,0 +1,13 @@
+{
+  "name": "mini-compiler-prototype",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Web front end for the Mini Compiler for Student Result Expressions",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "test": "node tests/check-prototype.js"
+  }
+}

@@ -1,0 +1,3 @@
+int marks;
+marks = 420.5;
+print marks;

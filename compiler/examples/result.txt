@@ -1,0 +1,6 @@
+int marks;
+float percentage;
+marks = 420;
+percentage = (marks / 500.0) * 100;
+print marks;
+print percentage;

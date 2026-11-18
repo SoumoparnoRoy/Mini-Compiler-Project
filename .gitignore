@@ -1,0 +1,12 @@
+node_modules/
+.vercel/
+.env*
+*.log
+
+# Windows build for the local server; rebuild it from compiler/mini_compiler.c
+bin/*.exe
+*.exe
+
+Thumbs.db
+desktop.ini
+.DS_Store
